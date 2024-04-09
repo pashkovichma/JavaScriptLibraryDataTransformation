@@ -1,8 +1,9 @@
-function addValues(a, b) {
-  if (a + b) {
-    return a + b;
-  } else {
-    throw new Error('Addition not possible for the provided types.');
+function addValues (valueToAdd1, valueToAdd2) {
+  try {
+    let result  = valueToAdd1 + valueToAdd2;
+    return result;
+  } catch (err) {
+    throw new Error('The addition is not possible');
   }
 };
 
