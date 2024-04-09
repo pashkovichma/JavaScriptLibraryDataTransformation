@@ -7,11 +7,19 @@ function addValues (valueToAdd1, valueToAdd2) {
   }
 };
 
-function stringifyValue(argumentToSrtingify) {
-  if (Array.isArray(argumentToSrtingify) || 
-      typeof argumentToSrtingify === 'object') {
-    return JSON.stringify(argumentToSrtingify);
+function stringifyValue(valueToSrtingify) {
+  if (Array.isArray(valueToSrtingify) || 
+      typeof valueToSrtingify === 'object') {
+    return JSON.stringify(valueToSrtingify);
   } else {
-    return String(argumentToSrtingify);
+    return String(valueToSrtingify);
+  }
+};
+
+function invertBoolean (booleanValue) {
+  if (typeof booleanValue === 'boolean') {
+    return !booleanValue;
+  } else {
+    throw new Error('The argument is not a boolean');
   }
 };
