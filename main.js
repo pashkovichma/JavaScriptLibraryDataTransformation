@@ -72,3 +72,12 @@ function coerceToType (value, type) {
       throw new Error('Coercion is not possible');
   }
 };
+
+//Optional
+function reverseString(stringToReverse) {
+  if (typeof stringToReverse === 'string') {
+    return stringToReverse.split('').reverse().join('');
+  } else {
+    throw new Error(`Reverse is not possible for value ${stringToReverse} with type ${typeof stringToReverse}`);
+  }
+}
