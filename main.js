@@ -1,9 +1,18 @@
 function addValues (valueToAdd1, valueToAdd2) {
-  try {
-    let result  = valueToAdd1 + valueToAdd2;
-    return result;
-  } catch (err) {
-    throw new Error(`Addition is not possible for ${typeof valueToAdd1} and ${typeof valueToAdd2}`);
+  if (typeof valueToAdd1 === 'number' && typeof valueToAdd2 === 'number') {
+    return valueToAdd1 + valueToAdd2;
+  } else if (typeof valueToAdd1 === 'bigint' && typeof valueToAdd2 === 'bigint') {
+    return valueToAdd1 + valueToAdd2;
+  } else if (typeof valueToAdd1 === 'boolean' && typeof valueToAdd2 === 'boolean') {
+    return Number(valueToAdd1) + Number(valueToAdd2);
+  } else if (typeof valueToAdd1 === 'string' && typeof valueToAdd2 === 'string') {
+    return valueToAdd1 + valueToAdd2;
+  } else if (Array.isArray(valueToAdd1) && Array.isArray(valueToAdd2)) {
+    return valueToAdd1.concat(valueToAdd2);
+  } else if (typeof valueToAdd1 === 'object' && typeof valueToAdd2 === 'object') {
+    return {...valueToAdd1, ...valueToAdd2};
+  } else {
+    throw new Error(`Addition not possible for ${typeof valueToAdd1} and ${typeof valueToAdd2}`);
   }
 };
 
