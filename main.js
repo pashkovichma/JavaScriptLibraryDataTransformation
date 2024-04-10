@@ -3,7 +3,7 @@ function addValues (valueToAdd1, valueToAdd2) {
     let result  = valueToAdd1 + valueToAdd2;
     return result;
   } catch (err) {
-    throw new Error('The addition is not possible');
+    throw new Error(`Addition is not possible for ${typeof valueToAdd1} and ${typeof valueToAdd2}`);
   }
 };
 
@@ -21,5 +21,32 @@ function invertBoolean (booleanValue) {
     return !booleanValue;
   } else {
     throw new Error('The argument is not a boolean');
+  }
+};
+
+function convertToNumber (valueToNumber) {
+  if (typeof valueToNumber === 'number') {
+    return valueToNumber;
+  } else if (typeof valueToNumber === 'string') {
+    const floatValue = parseFloat(valueToNumber);
+    if (!isNaN(floatValue)) {
+      return floatValue;
+    } else {
+      throw new Error(`Conversion is not possible for value ${valueToNumber} with type ${typeof valueToNumber}`);
+    }
+  } else if (typeof valueToNumber === 'boolean') {
+    return valueToNumber ? 1 : 0;
+  } else if (typeof valueToNumber === 'bigint') {
+    return Number(valueToNumber);
+  }  else if ( valueToNumber === null || valueToNumber === undefined) {
+    return 0;
+  } else if (typeof valueToNumber === 'object'){
+    throw new Error(`Conversion is not possible for ${JSON.stringify(valueToNumber)}`);
+  } else if (typeof valueToNumber === 'function'){
+  throw new Error(`Conversion is not possible for ${valueToNumber}`);
+  } else if (typeof valueToNumber === 'symbol'){
+    throw new Error(`Conversion is not possible for symbol`);
+  } else {
+    throw new Error(`Conversion is not possible`);
   }
 };
