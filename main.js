@@ -50,3 +50,16 @@ function convertToNumber (valueToNumber) {
     throw new Error(`Conversion is not possible`);
   }
 };
+
+function coerceToType (value, type) {
+  switch (type) {
+    case 'number':
+      return convertToNumber(value);
+    case 'string':
+      return String(value);
+    case 'boolean':
+      return Boolean(value);
+    default:
+      throw new Error('Coercion is not possible');
+  }
+};
